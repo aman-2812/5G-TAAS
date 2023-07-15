@@ -1,0 +1,7 @@
+region = "eu-central-1"
+vpc_id = "vpc-0a31a4d85dfa1e115"
+instance_name = "5g-nw-node"
+subnet_id = "subnet-0d44db98a5e6fd16c"
+instance_type = "t2.medium"
+ami = "ami-04e601abe3e1a910f"
+key = "dev-fra"
