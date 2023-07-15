@@ -5,7 +5,7 @@ function install_kernel_modules() {
   sudo apt update -y
   sudo apt install make -y
   sudo apt install gcc -y
-  git clone https://github.com/aman-2812/gtp5g.git && cd gtp5g
+  git clone https://github.com/free5gc/gtp5g.git && cd gtp5g
   make clean && make
 }
 
@@ -24,7 +24,7 @@ function install_docker() {
 }
 
 function clone_free5gc_repo_and_start_containers() {
-    git clone https://github.com/aman-2812/free5gc-compose.git
+    git clone https://github.com/free5gc/free5gc-compose.git
     cd free5gc-compose
 
     cd base

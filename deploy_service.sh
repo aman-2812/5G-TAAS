@@ -27,6 +27,7 @@ while true; do
   else
     if [ "$counter" -gt 1200 ]; then
       echo "There was a error while deploying 5G network. Check instance logs."
+      break
     fi
     echo "5G network deployment in progress. Retrying in $DELAY_SECONDS seconds..."
     sleep "$DELAY_SECONDS"
