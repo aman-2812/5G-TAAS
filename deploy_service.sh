@@ -6,6 +6,7 @@ start_time=$(date +%s)
 echo "Deploying 5G network."
 
 cd terraform
+terraform init
 terraform apply -var-file="variables.tfvars"
 
 public_ip=$(terraform output public_ip | sed 's/"//g')
