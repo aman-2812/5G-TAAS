@@ -9,8 +9,8 @@ cd terraform
 terraform init
 terraform apply -var-file="variables.tfvars"
 
-public_ip=$(terraform output public_ip | sed 's/"//g')
-URL="http://$public_ip:9090/"
+public_dns=$(terraform output public_dns | sed 's/"//g')
+URL="http://$public_dns:9090/"
 DELAY_SECONDS=30
 counter=0
 
@@ -19,17 +19,17 @@ while true; do
     echo "Success! 5G network is deployed"
     echo "-------------------------------"
     echo "Access the following URLs:"
-    echo "Prometheus: http://$public_ip:9090/"
-    echo "cAdvisor: http://$public_ip:8080/"
-    echo "Node exporter: http://$public_ip:9100/"
-    echo "Free 5GC Web UI: http://$public_ip:5000/"
+    echo "Prometheus: http://$public_dns:9090/"
+    echo "cAdvisor: http://$public_dns:8080/"
+    echo "Node exporter: http://$public_dns:9100/"
+    echo "Free 5GC Web UI: http://$public_dns:5000/"
     break
   else
     if [ "$counter" -gt 1200 ]; then
       echo "There was a error while deploying 5G network. Check instance logs."
       break
     fi
-    echo "5G network deployment in progress. Retrying in $DELAY_SECONDS seconds..."
+    echo "5G network deployment in progress ($counter seconds passed.). Retrying in $DELAY_SECONDS seconds..."
     sleep "$DELAY_SECONDS"
     ((counter=counter+$DELAY_SECONDS))
   fi

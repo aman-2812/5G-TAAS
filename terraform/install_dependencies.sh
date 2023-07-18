@@ -7,6 +7,7 @@ function install_kernel_modules() {
   sudo apt install gcc -y
   git clone https://github.com/free5gc/gtp5g.git && cd gtp5g
   make clean && make
+  sudo make install
 }
 
 function install_docker() {
@@ -38,7 +39,7 @@ function clone_free5gc_repo_and_start_containers() {
 function deploy_monitoring() {
     cd /
     git clone https://github.com/aman-2812/free5gc-monitoring.git
-    cd free5gc-automation/monitoring/
+    cd free5gc-monitoring/monitoring/
     sudo docker compose up -d
 }
 
