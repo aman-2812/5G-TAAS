@@ -48,12 +48,6 @@ resource "aws_launch_configuration" "nw-5g" {
   }
 }
 
-resource "aws_ec2_tag" "nw-5g-tag" {
-  resource_id = aws_autoscaling_group.nw-5g.id
-  key         = "Name"
-  value       = "5g-nw-node"
-}
-
 resource "aws_autoscaling_group" "nw-5g" {
   min_size             = 1
   max_size             = 1
