@@ -1,13 +1,13 @@
 #!/bin/bash
 set -e
 
-start_time=$(date +%s)
-
 echo "Deploying 5G network."
 
 cd terraform
 terraform init
 terraform apply -var-file="variables.tfvars"
+
+start_time=$(date +%s)
 
 public_dns=$(terraform output public_dns | sed 's/"//g')
 URL="http://$public_dns:9090/"

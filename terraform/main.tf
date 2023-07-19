@@ -13,7 +13,7 @@ provider "aws" {
   region = var.region
 }
 
-resource "aws_security_group" "ingress-all-test" {
+resource "aws_security_group" "ingress-all" {
   name = "allow-all-sg"
   vpc_id = var.vpc_id
   ingress {
@@ -38,7 +38,7 @@ resource "aws_launch_configuration" "nw-5g" {
   image_id        = var.ami
   instance_type   = var.instance_type
   user_data       = "${file("install_dependencies.sh")}"
-  security_groups = ["${aws_security_group.ingress-all-test.id}"]
+  security_groups = ["${aws_security_group.ingress-all.id}"]
   root_block_device {
     volume_size = 30
     volume_type = "gp2"
@@ -60,7 +60,7 @@ resource "aws_lb" "nw-5g" {
   name               = "nw-5g-lb"
   internal           = false
   load_balancer_type = "application"
-  security_groups    = ["${aws_security_group.ingress-all-test.id}"]
+  security_groups    = ["${aws_security_group.ingress-all.id}"]
   subnets            = ["subnet-0344b6e91a4655d08","subnet-00ba09388043d53b9","subnet-0d44db98a5e6fd16c"]
 }
 
