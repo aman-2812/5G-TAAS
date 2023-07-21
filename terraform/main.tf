@@ -53,7 +53,7 @@ resource "aws_autoscaling_group" "nw-5g" {
   max_size             = 1
   desired_capacity     = 1
   launch_configuration = aws_launch_configuration.nw-5g.name
-  vpc_zone_identifier  = [var.subnet_id]
+  vpc_zone_identifier  = var.subnets
 }
 
 resource "aws_lb" "nw-5g" {
@@ -61,7 +61,7 @@ resource "aws_lb" "nw-5g" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = ["${aws_security_group.ingress-all.id}"]
-  subnets            = ["subnet-0344b6e91a4655d08","subnet-00ba09388043d53b9","subnet-0d44db98a5e6fd16c"]
+  subnets            = var.subnets
 }
 
 resource "aws_lb_listener" "webui" {

@@ -13,8 +13,8 @@ variable "instance_type" {
   description = "Type of EC2 instance"
 }
 
-variable "subnet_id" {
-  type        = string
+variable "subnets" {
+  type        = set(string)
   description = "Subnet Id to deploy EC2 instance"
 }
 

@@ -11,7 +11,7 @@ start_time=$(date +%s)
 
 public_dns=$(terraform output public_dns | sed 's/"//g')
 URL="http://$public_dns:9090/"
-DELAY_SECONDS=30
+DELAY_SECONDS=10
 counter=0
 
 while true; do
